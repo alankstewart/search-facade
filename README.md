@@ -1,5 +1,6 @@
 # search-facade
 
+[![Build Status](https://travis-ci.org/alankstewart/search-facade.svg?branch=master)](https://travis-ci.org/alankstewart/search-facade)
 
 ## Notes
 
