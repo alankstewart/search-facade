@@ -2,7 +2,6 @@ package alankstewart.searchfacade.user;
 
 import alankstewart.searchfacade.shared.AbstractSearchFacadeService;
 import alankstewart.searchfacade.shared.filter.Filter;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -19,8 +18,7 @@ public class UserService extends AbstractSearchFacadeService {
     }
 
     public List<User> searchUsers(@Valid List<Filter> filter) {
-        Query query = createQuery(filter);
-        return mongoTemplate.find(query, User.class);
+        return mongoTemplate.find(createQuery(filter), User.class);
     }
 
     public void clearAndInsertUsers(List<User> users) {

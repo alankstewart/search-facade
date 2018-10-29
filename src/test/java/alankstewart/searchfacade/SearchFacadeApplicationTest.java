@@ -1,6 +1,7 @@
 package alankstewart.searchfacade;
 
 import alankstewart.searchfacade.shared.filter.Filter;
+import alankstewart.searchfacade.shared.filter.Filter.Range;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -85,7 +86,7 @@ public class SearchFacadeApplicationTest {
         Filter filter = new Filter()
                 .setAttribute("time")
                 .setOperator(eq)
-                .setRange(new Filter.Range().setFrom(1262542260000L).setTo(1262628660000L));
+                .setRange(new Range().setFrom(1262542260000L).setTo(1262628660000L));
 
         given()
                 .port(port)
@@ -241,7 +242,7 @@ public class SearchFacadeApplicationTest {
                 .setAttribute("user")
                 .setOperator(eq)
                 .setValue("user4@sample.io")
-                .setRange(new Filter.Range().setFrom(0).setTo(2L));
+                .setRange(new Range().setFrom(0).setTo(2L));
 
         given()
                 .port(port)
@@ -257,7 +258,7 @@ public class SearchFacadeApplicationTest {
         Filter filter = new Filter()
                 .setAttribute("time")
                 .setOperator(eq)
-                .setRange(new Filter.Range().setFrom(2L).setTo(0));
+                .setRange(new Range().setFrom(2L).setTo(0));
 
         given()
                 .port(port)
@@ -273,7 +274,7 @@ public class SearchFacadeApplicationTest {
         Filter filter = new Filter()
                 .setAttribute("user")
                 .setOperator(gte)
-                .setRange(new Filter.Range().setFrom(0).setTo(2L));
+                .setRange(new Range().setFrom(0).setTo(2L));
 
         given()
                 .port(port)
@@ -289,7 +290,7 @@ public class SearchFacadeApplicationTest {
         Filter filter = new Filter()
                 .setAttribute("user")
                 .setOperator(lte)
-                .setRange(new Filter.Range().setFrom(0).setTo(2L));
+                .setRange(new Range().setFrom(0).setTo(2L));
 
         given()
                 .port(port)

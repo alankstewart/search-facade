@@ -2,7 +2,6 @@ package alankstewart.searchfacade.event;
 
 import alankstewart.searchfacade.shared.AbstractSearchFacadeService;
 import alankstewart.searchfacade.shared.filter.Filter;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -19,8 +18,7 @@ public class EventService extends AbstractSearchFacadeService {
     }
 
     public List<Event> searchEvents(@Valid List<Filter> filter) {
-        Query query = createQuery(filter);
-        return mongoTemplate.find(query, Event.class);
+        return mongoTemplate.find(createQuery(filter), Event.class);
     }
 
     public void clearAndInsertEvents(List<Event> events) {

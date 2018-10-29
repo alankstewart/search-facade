@@ -1,6 +1,7 @@
 package alankstewart.searchfacade.shared;
 
 import alankstewart.searchfacade.shared.filter.Filter;
+import alankstewart.searchfacade.shared.filter.Filter.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -25,19 +26,22 @@ public abstract class AbstractSearchFacadeService {
     }
 
     private void addCriteria(Query query, Filter f) {
+        Object value = f.getValue();
+        String attribute = f.getAttribute();
         switch (f.getOperator()) {
             case eq:
-                if (f.getValue() == null && f.getRange() != null) {
-                    query.addCriteria(where(f.getAttribute()).gte(f.getRange().getFrom()).lte(f.getRange().getTo()));
-                } else if (f.getValue() != null && f.getRange() == null) {
-                    query.addCriteria(where(f.getAttribute()).is(f.getValue()));
+                Range range = f.getRange();
+                if (value == null && range != null) {
+                    query.addCriteria(where(attribute).gte(range.getFrom()).lte(range.getTo()));
+                } else if (value != null && range == null) {
+                    query.addCriteria(where(attribute).is(value));
                 }
                 break;
             case gte:
-                query.addCriteria(where(f.getAttribute()).gte(f.getValue()));
+                query.addCriteria(where(attribute).gte(value));
                 break;
             case lte:
-                query.addCriteria(where(f.getAttribute()).lte(f.getValue()));
+                query.addCriteria(where(attribute).lte(value));
                 break;
         }
     }
