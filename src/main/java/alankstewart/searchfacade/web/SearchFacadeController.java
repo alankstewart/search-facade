@@ -29,12 +29,12 @@ public class SearchFacadeController {
     private UserService userService;
 
     @GetMapping("/events/{id}")
-    public ResponseEntity<Event> findEvent(@PathVariable("id") String id) {
+    public ResponseEntity<Event> findEvent(@PathVariable String id) {
         return eventService.findEvent(id).map(ResponseEntity::ok).orElse(notFound().build());
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> findUser(@PathVariable("id") String id) {
+    public ResponseEntity<User> findUser(@PathVariable String id) {
         return userService.findUser(id).map(ResponseEntity::ok).orElse(notFound().build());
     }
 
