@@ -1,9 +1,8 @@
+install: gradle wrapper --gradle-version 4.10
 language: java
 jdk:
   - oraclejdk8
 services: mongodb
-before_install:
-- chmod +x gradlew
 script:
 - ./gradlew build --scan -s
 before_cache:
