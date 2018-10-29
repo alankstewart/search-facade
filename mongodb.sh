@@ -1,0 +1,1 @@
+mongod --dbpath $HOME/data/db --port 27777
