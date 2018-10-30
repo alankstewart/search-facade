@@ -1,5 +1,6 @@
 package alankstewart.searchfacade.user;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,6 +17,7 @@ public final class User {
     private final String user;
     private final String workstation;
 
+    @JsonCreator
     public User(@JsonProperty("_id") String id,
                 @JsonProperty("user") String user,
                 @JsonProperty("workstation") String workstation) {
