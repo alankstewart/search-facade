@@ -119,6 +119,7 @@ public class SearchFacadeApplicationTest {
     public void shouldSearchEventsWithEmptyFilter() {
         given()
                 .port(port)
+                .queryParam("filter", (Filter) null)
                 .when()
                 .get("/events/search")
                 .then()
